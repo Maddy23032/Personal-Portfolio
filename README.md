@@ -8,7 +8,7 @@ This is the source code for my personal portfolio, built with React, TypeScript,
 1. Clone the repository:
 	```bash
 	git clone https://github.com/Maddy23032/Portfolio.git
-	cd pulse-prism-show
+	cd Personal-Portfolio
 	```
 2. Install dependencies:
 	```bash
