@@ -1,0 +1,361 @@
+html:not(.light) .btn-glow.outline,
+html:not(.light) .btn-glow.outline:hover,
+html:not(.light) .btn-glow.outline:focus,
+html:not(.light) .btn-glow.outline:active,
+html:not(.light) .btn-glow.outline *,
+html:not(.light) .btn-glow.outline:hover *,
+html:not(.light) .btn-glow.outline:focus *,
+html:not(.light) .btn-glow.outline:active * {
+  color: #fff !important;
+  fill: #fff !important;
+}
+html:not(.light) .btn-glow.outline,
+html:not(.light) .btn-glow.outline:hover,
+html:not(.light) .btn-glow.outline:focus,
+html:not(.light) .btn-glow.outline:active {
+  color: #fff !important;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html.light {
+  --background: 0 0% 99%;
+  --background-secondary: 0 0% 97%;
+  --background-tertiary: 0 0% 94%;
+  --foreground: 220 30% 3%; /* much darker for text */
+  --card: 0 0% 100%;
+  --card-foreground: 220 30% 3%;
+  --card-hover: 0 0% 96%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 30% 3%;
+  --primary: 24 100% 48%;
+  --primary-foreground: #111;
+  --primary-glow: 24 100% 70%;
+  --secondary: 220 100% 60%;
+  --secondary-foreground: #111;
+  --secondary-glow: 220 100% 85%;
+  --accent: 40 100% 50%;
+  --accent-foreground: #111;
+  --accent-glow: 40 100% 70%;
+  --muted: 220 20% 96%;
+  --muted-foreground: 220 15% 15%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: #fff;
+  --border: 220 20% 80%;
+  --input: 220 20% 96%;
+  --ring: 24 100% 48%;
+  /* Soften/brighten the main background gradient for light theme */
+  --gradient-hero: radial-gradient(ellipse at top left, rgba(255,255,255,0.85) 0%, rgba(240,240,255,0.55) 40%, rgba(220,220,240,0.25) 70%, rgba(255,255,255,0.9) 100%);
+  /* Make cards, popovers, and buttons more solid/glassy for clarity */
+  --card: 0 0% 100%;
+  --card-foreground: 220 30% 3%;
+  --card-hover: 0 0% 98%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 30% 3%;
+  --glass-bg: rgba(255,255,255,0.82);
+  --glass-border: 220 20% 90%;
+}
+
+
+@layer base {
+  :root {
+    /* Deep Matrix Background System */
+    --background: 220 30% 3%;
+    --background-secondary: 220 25% 6%;
+    --background-tertiary: 220 20% 9%;
+    --foreground: 120 30% 95%;
+
+    /* Enhanced Card System */
+    --card: 220 25% 6%;
+    --card-foreground: 120 30% 95%;
+    --card-hover: 220 20% 9%;
+
+    /* Popover System */
+    --popover: 220 25% 6%;
+    --popover-foreground: 120 30% 95%;
+
+    /* Matrix Green Accent System */
+    --primary: 120 100% 50%; /* Matrix Green */
+    --primary-foreground: 220 30% 3%;
+    --primary-glow: 120 100% 70%;
+
+    --secondary: 300 100% 60%; /* Electric Purple */
+    --secondary-foreground: 120 30% 95%;
+    --secondary-glow: 300 100% 80%;
+
+    --accent: 60 100% 50%; /* Electric Yellow */
+    --accent-foreground: 220 30% 3%;
+    --accent-glow: 60 100% 70%;
+
+    /* Interactive States */
+    --muted: 220 20% 12%;
+    --muted-foreground: 120 15% 70%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 120 30% 95%;
+
+    --border: 120 50% 20%;
+    --input: 220 20% 12%;
+    --ring: 120 100% 50%;
+
+    --radius: 0.5rem;
+
+    /* Complex Gradient System */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+    --gradient-hero: radial-gradient(ellipse at top, hsl(120 100% 10% / 0.3) 0%, hsl(var(--background)) 50%, hsl(300 100% 10% / 0.2) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(220 25% 8%) 50%, hsl(var(--card-hover)) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(var(--primary) / 0.4) 0%, hsl(var(--secondary) / 0.2) 50%, transparent 70%);
+    --gradient-matrix: linear-gradient(180deg, transparent 0%, hsl(120 100% 50% / 0.1) 50%, transparent 100%);
+    --gradient-cyber: conic-gradient(from 0deg at 50% 50%, hsl(var(--primary) / 0.3), hsl(var(--secondary) / 0.3), hsl(var(--accent) / 0.3), hsl(var(--primary) / 0.3));
+    
+    /* Enhanced Shadow System */
+    --shadow-glow: 0 0 30px hsl(var(--primary) / 0.4), 0 0 60px hsl(var(--primary) / 0.2);
+    --shadow-card: 0 8px 32px hsl(220 30% 1% / 0.6), inset 0 1px 0 hsl(var(--border) / 0.3);
+    --shadow-hover: 0 20px 60px hsl(var(--primary) / 0.3), 0 0 100px hsl(var(--secondary) / 0.2);
+
+    /* Pattern Variables */
+    --matrix-pattern: repeating-linear-gradient(90deg, transparent, transparent 2px, hsl(var(--primary) / 0.1) 2px, hsl(var(--primary) / 0.1) 4px);
+    --circuit-pattern: radial-gradient(circle at 20% 80%, hsl(var(--primary) / 0.1) 0%, transparent 50%), 
+                       radial-gradient(circle at 80% 20%, hsl(var(--secondary) / 0.1) 0%, transparent 50%),
+                       radial-gradient(circle at 40% 40%, hsl(var(--accent) / 0.05) 0%, transparent 50%);
+
+    /* Animation Variables */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Sidebar (keeping for compatibility) */
+    --sidebar-background: 240 8% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 180 100% 50%;
+    --sidebar-primary-foreground: 240 10% 5%;
+    --sidebar-accent: 240 6% 12%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 240 6% 20%;
+    --sidebar-ring: 180 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    background-image: var(--matrix-pattern), var(--circuit-pattern);
+    background-size: 20px 20px, 100px 100px;
+    background-attachment: fixed;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom Component Styles */
+@layer components {
+  /* Cyberpunk Glowing Button */
+  .btn-glow {
+    @apply relative overflow-hidden;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow);
+    transition: var(--transition-smooth);
+    border: 1px solid hsl(var(--primary) / 0.3);
+  }
+
+  .btn-glow:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-2px) scale(1.02);
+    border-color: hsl(var(--primary) / 0.8);
+  }
+
+  .btn-glow::before {
+    @apply absolute inset-0 opacity-0;
+    content: '';
+    background: linear-gradient(45deg, transparent 30%, hsl(var(--primary-glow) / 0.5) 50%, transparent 70%);
+    transition: var(--transition-smooth);
+  }
+
+  .btn-glow:hover::before {
+    @apply opacity-100;
+    animation: matrix-shimmer 1.2s ease-in-out infinite;
+  }
+
+  /* Enhanced Glass Card Effect */
+  .glass-card {
+    background: var(--gradient-card);
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--border) / 0.5);
+    box-shadow: var(--shadow-card);
+    transition: var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+  }
+  html.light .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+  }
+
+  .glass-card::before {
+    @apply absolute inset-0 opacity-0;
+    content: '';
+    background: var(--gradient-cyber);
+    transition: var(--transition-smooth);
+    z-index: -1;
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--primary) / 0.8);
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-6px) rotateX(2deg);
+  }
+
+  .glass-card:hover::before {
+    @apply opacity-20;
+  }
+
+  /* Matrix-style Animated Underline */
+  .animated-underline {
+    @apply relative;
+  }
+
+  .animated-underline::after {
+    @apply absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-500;
+    content: '';
+    background: var(--gradient-primary);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+  }
+
+  .animated-underline:hover::after {
+    @apply w-full;
+    animation: matrix-glow 1s ease-in-out;
+  }
+
+  /* Enhanced Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px hsl(var(--primary) / 0.3));
+  }
+
+  /* Matrix Floating Animation */
+  .floating {
+    animation: matrix-floating 4s ease-in-out infinite;
+  }
+
+  /* Enhanced Particle Container */
+  .particles-container {
+    @apply absolute inset-0 -z-10;
+    background: var(--gradient-hero);
+  }
+
+  /* Matrix Code Rain Effect */
+  .matrix-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -2;
+    background: var(--gradient-matrix);
+    opacity: 0.1;
+  }
+
+  /* Cyber Grid */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(hsl(var(--primary) / 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Glitch Effect */
+  .glitch {
+    position: relative;
+  }
+
+  .glitch::before,
+  .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+  }
+
+  .glitch::before {
+    animation: glitch-1 0.5s infinite;
+    color: hsl(var(--primary));
+    z-index: -1;
+  }
+
+  .glitch::after {
+    animation: glitch-2 0.5s infinite;
+    color: hsl(var(--secondary));
+    z-index: -2;
+  }
+}
+
+/* Enhanced Keyframe Animations */
+@keyframes matrix-shimmer {
+  0% { transform: translateX(-100%) skewX(45deg); }
+  100% { transform: translateX(200%) skewX(45deg); }
+}
+
+@keyframes matrix-floating {
+  0%, 100% { transform: translateY(0px) rotateY(0deg); }
+  25% { transform: translateY(-15px) rotateY(5deg); }
+  50% { transform: translateY(-30px) rotateY(0deg); }
+  75% { transform: translateY(-15px) rotateY(-5deg); }
+}
+
+@keyframes matrix-glow {
+  0%, 100% { opacity: 1; box-shadow: 0 0 5px hsl(var(--primary) / 0.5); }
+  50% { opacity: 1; box-shadow: 0 0 20px hsl(var(--primary) / 0.8), 0 0 30px hsl(var(--primary) / 0.4); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; text-shadow: 0 0 20px currentColor; }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glitch-1 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes glitch-2 {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+}
+
+@keyframes code-rain {
+  0% { transform: translateY(-100vh); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
